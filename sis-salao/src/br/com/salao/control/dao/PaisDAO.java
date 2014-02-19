@@ -4,8 +4,8 @@
  */
 package br.com.salao.control.dao;
 
-import br.com.salao.control.interfaces.IClienteDAO;
-import br.com.salao.model.beans.Cliente;
+import br.com.salao.control.interfaces.IPaisDAO;
+import br.com.salao.model.beans.Pais;
 import br.com.salao.model.utils.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,40 +18,33 @@ import java.util.List;
  *
  * @author ritacosta
  */
-public class ClienteDAO implements IClienteDAO {
+public class PaisDAO implements IPaisDAO {
 
-    private static final String sqlInsert = "insert into cliente (endereco_codigo, nome, "
-            + "telefone, celular, rg, cpf, email) values (?,?,?,?,?,?,?)";
-    private static final String sqlUpdate = "update cliente set endereco_codigo = ?, nome = ?, "
-            + "telefone = ?, celular = ?, rg = ?, cpf = ?, email = ? where codigo = ?";
-    private static final String sqlDelete = "delete from cliente where codigo = ?";
-    private static final String sqlList = "select * from cliente";
+    private static final String sqlInsert = "";
+    private static final String sqlList = "";
+    private static final String sqlUpdate = "";
+    private static final String sqlDelete = "";
+    
 
     @Override
-    public int save(Cliente cliente) {
+    public int save(Pais pais) {
         Connection conn = null;
         PreparedStatement pstm = null;
         int result = 0;
         try {
-            int index = 0;
             conn = ConnectionFactory.getConnection();
             pstm = conn.prepareStatement(sqlInsert);
-            pstm.setInt(++index, cliente.getEnderecoCodigo());
-            pstm.setString(++index, cliente.getNome());
-            pstm.setInt(++index, cliente.getTelefone());
-            pstm.setInt(++index, cliente.getCelular());
-            pstm.setInt(++index, cliente.getRg());
-            pstm.setInt(++index, cliente.getCpf());
-            pstm.setString(++index, cliente.getEmail());
+            pstm.setString(1,  pais.getNome());
+            pstm.setString(2, pais.getSigla());
             result = pstm.executeUpdate();
         } catch (SQLException ex) {
             try {
-                if (conn != null) {
+                if(conn != null){
                     conn.rollback();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-            } finally {
+            } finally{
                 ConnectionFactory.close(conn, pstm, null);
             }
             ex.printStackTrace();
@@ -60,31 +53,25 @@ public class ClienteDAO implements IClienteDAO {
     }
 
     @Override
-    public int update(Cliente cliente) {
+    public int update(Pais pais) {
         Connection conn = null;
         PreparedStatement pstm = null;
+        conn = ConnectionFactory.getConnection();
         int result = 0;
         try {
-            int index = 0;
-            conn = ConnectionFactory.getConnection();
             pstm = conn.prepareStatement(sqlUpdate);
-            pstm.setInt(++index, cliente.getEnderecoCodigo());
-            pstm.setString(++index, cliente.getNome());
-            pstm.setInt(++index, cliente.getTelefone());
-            pstm.setInt(++index, cliente.getCelular());
-            pstm.setInt(++index, cliente.getRg());
-            pstm.setInt(++index, cliente.getCpf());
-            pstm.setString(++index, cliente.getEmail());
-            pstm.setInt(++index, cliente.getCodigo());
+            pstm.setString(1,  pais.getNome());
+            pstm.setString(2, pais.getSigla());
+            pstm.setInt(3, pais.getCodigo());
             result = pstm.executeUpdate();
         } catch (SQLException ex) {
             try {
-                if (conn != null) {
+                if(conn != null){
                     conn.rollback();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-            } finally {
+            } finally{
                 ConnectionFactory.close(conn, pstm, null);
             }
             ex.printStackTrace();
@@ -104,12 +91,12 @@ public class ClienteDAO implements IClienteDAO {
             result = pstm.executeUpdate();
         } catch (SQLException ex) {
             try {
-                if (conn != null) {
+                if(conn != null){
                     conn.rollback();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-            } finally {
+            } finally{
                 ConnectionFactory.close(conn, pstm, null);
             }
             ex.printStackTrace();
@@ -118,40 +105,34 @@ public class ClienteDAO implements IClienteDAO {
     }
 
     @Override
-    public List<Cliente> listarTodos() {
+    public List<Pais> listarTodos() {
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
-        List<Cliente> clientes = new ArrayList<>();
+        List<Pais> paises = new ArrayList<>();
         try {
             conn = ConnectionFactory.getConnection();
             pstm = conn.prepareStatement(sqlList);
             rs = pstm.executeQuery();
-            while(rs.next()){
-                Cliente cliente = new Cliente();
-                cliente.setCodigo(rs.getInt("codigo"));
-                cliente.setEnderecoCodigo(rs.getInt("endereco_codigo"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setTelefone(rs.getInt("telefone"));
-                cliente.setCelular(rs.getInt("celular"));
-                cliente.setRg(rs.getInt("rg"));
-                cliente.setCpf(rs.getInt("cpf"));
-                cliente.setEmail(rs.getString("email"));
-                clientes.add(cliente);
+            while (rs.next()) {
+                Pais pais = new Pais();
+                pais.setCodigo(rs.getInt("codigo"));
+                pais.setNome(rs.getString("nome"));
+                pais.setSigla(rs.getString("sigla"));
+                paises.add(pais);
             }
         } catch (SQLException ex) {
             try {
                 if (conn != null) {
                     conn.rollback();
                 }
-            } catch (SQLException ex1) {
-                
-                ex1.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
             } finally {
                 ConnectionFactory.close(conn, pstm, rs);
             }
             ex.printStackTrace();
         }
-         return clientes;
+        return paises;
     }
 }
