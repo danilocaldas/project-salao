@@ -15,12 +15,12 @@ public class Servico implements Serializable{
     
     private Integer codigo;
     
+    private Integer categoriaCodigo;
+    
     private String descricao;
     
     private Double preco; 
-            
-    private Categoria categoria;
-
+ 
     public Servico() {
     }
 
@@ -48,21 +48,21 @@ public class Servico implements Serializable{
         this.preco = preco;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Integer getCategoriaCodigo() {
+        return categoriaCodigo;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategoriaCodigo(Integer categoriaCodigo) {
+        this.categoriaCodigo = categoriaCodigo;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.codigo);
-        hash = 23 * hash + Objects.hashCode(this.descricao);
-        hash = 23 * hash + Objects.hashCode(this.preco);
-        hash = 23 * hash + Objects.hashCode(this.categoria);
+        int hash = 5;
+        hash = 79 * hash + Objects.hashCode(this.codigo);
+        hash = 79 * hash + Objects.hashCode(this.categoriaCodigo);
+        hash = 79 * hash + Objects.hashCode(this.descricao);
+        hash = 79 * hash + Objects.hashCode(this.preco);
         return hash;
     }
 
@@ -78,13 +78,13 @@ public class Servico implements Serializable{
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
+        if (!Objects.equals(this.categoriaCodigo, other.categoriaCodigo)) {
+            return false;
+        }
         if (!Objects.equals(this.descricao, other.descricao)) {
             return false;
         }
         if (!Objects.equals(this.preco, other.preco)) {
-            return false;
-        }
-        if (!Objects.equals(this.categoria, other.categoria)) {
             return false;
         }
         return true;
@@ -92,9 +92,8 @@ public class Servico implements Serializable{
 
     @Override
     public String toString() {
-        return "Servico{" + "codigo=" + codigo + ", descricao=" + descricao + ", preco=" + preco + ", categoria=" + categoria + '}';
+        return "Servico{" + "codigo=" + codigo + ", categoriaCodigo=" + categoriaCodigo + ", descricao=" + descricao + ", preco=" + preco + '}';
     }
     
-    
-    
+
 }

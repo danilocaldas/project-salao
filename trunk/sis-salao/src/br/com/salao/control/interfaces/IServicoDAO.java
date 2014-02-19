@@ -19,7 +19,7 @@ public interface IServicoDAO {
     
     public int delete(Integer id);
     
-    public List<Servico> listAll(Integer categoriaCodigo);
+    public List<Servico> listAll();
     
     
 }

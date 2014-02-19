@@ -15,14 +15,13 @@ public class Cidade implements Serializable{
     
     private Integer codigo;
     
+    private Integer estadoCodigo;
+    
     private String nome;
     
     private String sigla;
     
-    private Estado estado;
     
-    private Pais pais;
-
     public Cidade() {
     }
 
@@ -32,6 +31,14 @@ public class Cidade implements Serializable{
 
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
+    }
+
+    public Integer getEstadoCodigo() {
+        return estadoCodigo;
+    }
+
+    public void setEstadoCodigo(Integer estadoCodigo) {
+        this.estadoCodigo = estadoCodigo;
     }
 
     public String getNome() {
@@ -50,30 +57,13 @@ public class Cidade implements Serializable{
         this.sigla = sigla;
     }
 
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
-    public Pais getPais() {
-        return pais;
-    }
-
-    public void setPais(Pais pais) {
-        this.pais = pais;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.codigo);
-        hash = 37 * hash + Objects.hashCode(this.nome);
-        hash = 37 * hash + Objects.hashCode(this.sigla);
-        hash = 37 * hash + Objects.hashCode(this.estado);
-        hash = 37 * hash + Objects.hashCode(this.pais);
+        hash = 59 * hash + Objects.hashCode(this.codigo);
+        hash = 59 * hash + Objects.hashCode(this.estadoCodigo);
+        hash = 59 * hash + Objects.hashCode(this.nome);
+        hash = 59 * hash + Objects.hashCode(this.sigla);
         return hash;
     }
 
@@ -89,16 +79,13 @@ public class Cidade implements Serializable{
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
+        if (!Objects.equals(this.estadoCodigo, other.estadoCodigo)) {
+            return false;
+        }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
         if (!Objects.equals(this.sigla, other.sigla)) {
-            return false;
-        }
-        if (!Objects.equals(this.estado, other.estado)) {
-            return false;
-        }
-        if (!Objects.equals(this.pais, other.pais)) {
             return false;
         }
         return true;
@@ -106,7 +93,10 @@ public class Cidade implements Serializable{
 
     @Override
     public String toString() {
-        return "Cidade{" + "codigo=" + codigo + ", nome=" + nome + ", sigla=" + sigla + ", estado=" + estado + ", pais=" + pais + '}';
+        return "Cidade{" + "codigo=" + codigo + ", estadoCodigo=" + estadoCodigo + ", nome=" + nome + ", sigla=" + sigla + '}';
     }
+
+    
+    
    
 }

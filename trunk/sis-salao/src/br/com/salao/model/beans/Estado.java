@@ -15,13 +15,13 @@ public class Estado {
     
     private Integer codigo;
     
+    private Integer paisCodigo;
+    
     private String nome;
     
     private String sigla;
     
-    private Pais pais;
     
-    private Cidade cidade;
 
     public Estado() {
     }
@@ -32,6 +32,14 @@ public class Estado {
 
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
+    }
+
+    public Integer getPaisCodigo() {
+        return paisCodigo;
+    }
+
+    public void setPaisCodigo(Integer paisCodigo) {
+        this.paisCodigo = paisCodigo;
     }
 
     public String getNome() {
@@ -50,30 +58,13 @@ public class Estado {
         this.sigla = sigla;
     }
 
-    public Pais getPais() {
-        return pais;
-    }
-
-    public void setPais(Pais pais) {
-        this.pais = pais;
-    }
-
-    public Cidade getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.codigo);
-        hash = 29 * hash + Objects.hashCode(this.nome);
-        hash = 29 * hash + Objects.hashCode(this.sigla);
-        hash = 29 * hash + Objects.hashCode(this.pais);
-        hash = 29 * hash + Objects.hashCode(this.cidade);
+        hash = 59 * hash + Objects.hashCode(this.codigo);
+        hash = 59 * hash + Objects.hashCode(this.paisCodigo);
+        hash = 59 * hash + Objects.hashCode(this.nome);
+        hash = 59 * hash + Objects.hashCode(this.sigla);
         return hash;
     }
 
@@ -89,16 +80,13 @@ public class Estado {
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
+        if (!Objects.equals(this.paisCodigo, other.paisCodigo)) {
+            return false;
+        }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
         if (!Objects.equals(this.sigla, other.sigla)) {
-            return false;
-        }
-        if (!Objects.equals(this.pais, other.pais)) {
-            return false;
-        }
-        if (!Objects.equals(this.cidade, other.cidade)) {
             return false;
         }
         return true;
@@ -106,7 +94,8 @@ public class Estado {
 
     @Override
     public String toString() {
-        return "Estado{" + "codigo=" + codigo + ", nome=" + nome + ", sigla=" + sigla + ", pais=" + pais + ", cidade=" + cidade + '}';
+        return "Estado{" + "codigo=" + codigo + ", paisCodigo=" + paisCodigo + ", nome=" + nome + ", sigla=" + sigla + '}';
     }
+
    
 }

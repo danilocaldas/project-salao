@@ -19,7 +19,7 @@ public class Pais implements Serializable{
     
     private String sigla;
     
-    private Estado estado;
+
 
     public Pais() {
     }
@@ -48,13 +48,7 @@ public class Pais implements Serializable{
         this.sigla = sigla;
     }
 
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
+   
 
     @Override
     public int hashCode() {
@@ -62,7 +56,7 @@ public class Pais implements Serializable{
         hash = 17 * hash + Objects.hashCode(this.codigo);
         hash = 17 * hash + Objects.hashCode(this.nome);
         hash = 17 * hash + Objects.hashCode(this.sigla);
-        hash = 17 * hash + Objects.hashCode(this.estado);
+        
         return hash;
     }
 
@@ -84,15 +78,13 @@ public class Pais implements Serializable{
         if (!Objects.equals(this.sigla, other.sigla)) {
             return false;
         }
-        if (!Objects.equals(this.estado, other.estado)) {
-            return false;
-        }
+       
         return true;
     }
 
     @Override
     public String toString() {
-        return "Pais{" + "codigo=" + codigo + ", nome=" + nome + ", sigla=" + sigla + ", estado=" + estado + '}';
+        return "Pais{" + "codigo=" + codigo + ", nome=" + nome + ", sigla=" + sigla +'}';
     }
   
 }

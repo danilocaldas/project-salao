@@ -5,7 +5,6 @@
 package br.com.salao.teste.servico;
 
 import br.com.salao.control.rn.ServicoRN;
-import br.com.salao.model.beans.Categoria;
 import br.com.salao.model.beans.Servico;
 import org.junit.Test;
 
@@ -15,18 +14,23 @@ import org.junit.Test;
  */
 public class ServicoTest {
 
-   //@Test
+  //@Test
     public void save() {
-        Categoria categoria = new Categoria();
-        categoria.setCodigo(1);
+        
 
         Servico servico = new Servico();
-        servico.setDescricao("Escova termica");
+        servico.setDescricao("Tratamento de Hidratação");
         servico.setPreco(350.00);
-        servico.setCategoria(categoria);
+        servico.setCategoriaCodigo(1);
+        
+        Servico servico2 = new Servico();
+        servico2.setDescricao("Tratamento de Queratinização");
+        servico2.setPreco(280.00);
+        servico2.setCategoriaCodigo(1);
 
         ServicoRN rn = new ServicoRN();
-        rn.save(servico);
+        //rn.save(servico);
+        rn.save(servico2);
 
     }
 
@@ -34,9 +38,10 @@ public class ServicoTest {
     public void update() {
 
         Servico servico = new Servico();
+        servico.setCategoriaCodigo(1);
         servico.setPreco(400.00);
-        servico.setDescricao("Escova Termica");
-        servico.setCodigo(7);
+        servico.setDescricao("Tratamento de Hidratação");
+        servico.setCodigo(2);
 
         ServicoRN rn = new ServicoRN();
         rn.update(servico);
@@ -45,7 +50,7 @@ public class ServicoTest {
 
     //@Test
     public void delete() {
-        int codigo = 7;
+        int codigo = 3;
         Servico servico = new Servico();
         servico.setCodigo(codigo);
 
@@ -58,11 +63,8 @@ public class ServicoTest {
     @Test
     public void listar(){
          
-        int codigo = 1;
-        
-        
         ServicoRN rn = new ServicoRN();
-        System.out.println(rn.listarServicos(1)); 
-        
+        System.out.println(rn.listarServicos());
+       
     }
 }
