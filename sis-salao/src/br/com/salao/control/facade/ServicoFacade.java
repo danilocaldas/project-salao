@@ -20,8 +20,7 @@ public class ServicoFacade {
     
         this.rn = new ServicoRN();
     }
-    
-    
+   
     public int save(Servico servico){
         return this.rn.save(servico);
     }
@@ -34,9 +33,8 @@ public class ServicoFacade {
         return this.rn.delete(codigo);
     }
     
-    public List<Servico> listarTodos(Integer categoriaCodigo){
-        return this.rn.listarServicos(categoriaCodigo);
+    public List<Servico> listarTodos(){
+        return this.rn.listarServicos();
     }
-    
-    
+   
 }

@@ -15,7 +15,6 @@ public class Categoria implements Serializable {
 
     private Integer codigo;
     private String descricao;
-    private Servico servico;
 
     public Categoria() {
     }
@@ -36,20 +35,11 @@ public class Categoria implements Serializable {
         this.descricao = descricao;
     }
 
-    public Servico getServico() {
-        return servico;
-    }
-
-    public void setServico(Servico servico) {
-        this.servico = servico;
-    }
-
     @Override
     public int hashCode() {
         int hash = 5;
         hash = 11 * hash + Objects.hashCode(this.codigo);
         hash = 11 * hash + Objects.hashCode(this.descricao);
-        hash = 11 * hash + Objects.hashCode(this.servico);
         return hash;
     }
 
@@ -68,14 +58,12 @@ public class Categoria implements Serializable {
         if (!Objects.equals(this.descricao, other.descricao)) {
             return false;
         }
-        if (!Objects.equals(this.servico, other.servico)) {
-            return false;
-        }
+      
         return true;
     }
 
     @Override
     public String toString() {
-        return "Categoria{" + "codigo=" + codigo + ", descricao=" + descricao + ", servico=" + servico + '}';
+        return "Categoria{" + "codigo=" + codigo + ", descricao=" + descricao + '}';
     }
 }

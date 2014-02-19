@@ -14,15 +14,13 @@ import java.util.Objects;
 public class Endereco implements Serializable {
 
     private Integer codigo;
+    private Integer cidadeCodigo;
     private String rua;
     private String complemento;
     private Integer numero;
     private String bairro;
     private Integer cep;
-    private Cidade cidade;
-    private Estado estado;
-    private Pais pais;
-
+   
     public Endereco() {
     }
 
@@ -32,6 +30,14 @@ public class Endereco implements Serializable {
 
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
+    }
+
+    public Integer getCidadeCodigo() {
+        return cidadeCodigo;
+    }
+
+    public void setCidadeCodigo(Integer cidadeCodigo) {
+        this.cidadeCodigo = cidadeCodigo;
     }
 
     public String getRua() {
@@ -74,42 +80,16 @@ public class Endereco implements Serializable {
         this.cep = cep;
     }
 
-    public Cidade getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
-    }
-
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
-
-    public Pais getPais() {
-        return pais;
-    }
-
-    public void setPais(Pais pais) {
-        this.pais = pais;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 11 * hash + Objects.hashCode(this.codigo);
-        hash = 11 * hash + Objects.hashCode(this.rua);
-        hash = 11 * hash + Objects.hashCode(this.complemento);
-        hash = 11 * hash + Objects.hashCode(this.numero);
-        hash = 11 * hash + Objects.hashCode(this.bairro);
-        hash = 11 * hash + Objects.hashCode(this.cep);
-        hash = 11 * hash + Objects.hashCode(this.cidade);
-        hash = 11 * hash + Objects.hashCode(this.estado);
-        hash = 11 * hash + Objects.hashCode(this.pais);
+        int hash = 3;
+        hash = 43 * hash + Objects.hashCode(this.codigo);
+        hash = 43 * hash + Objects.hashCode(this.cidadeCodigo);
+        hash = 43 * hash + Objects.hashCode(this.rua);
+        hash = 43 * hash + Objects.hashCode(this.complemento);
+        hash = 43 * hash + Objects.hashCode(this.numero);
+        hash = 43 * hash + Objects.hashCode(this.bairro);
+        hash = 43 * hash + Objects.hashCode(this.cep);
         return hash;
     }
 
@@ -123,6 +103,9 @@ public class Endereco implements Serializable {
         }
         final Endereco other = (Endereco) obj;
         if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        if (!Objects.equals(this.cidadeCodigo, other.cidadeCodigo)) {
             return false;
         }
         if (!Objects.equals(this.rua, other.rua)) {
@@ -140,20 +123,15 @@ public class Endereco implements Serializable {
         if (!Objects.equals(this.cep, other.cep)) {
             return false;
         }
-        if (!Objects.equals(this.cidade, other.cidade)) {
-            return false;
-        }
-        if (!Objects.equals(this.estado, other.estado)) {
-            return false;
-        }
-        if (!Objects.equals(this.pais, other.pais)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Endereco{" + "codigo=" + codigo + ", rua=" + rua + ", complemento=" + complemento + ", numero=" + numero + ", bairro=" + bairro + ", cep=" + cep + ", cidade=" + cidade + ", estado=" + estado + ", pais=" + pais + '}';
+        return "Endereco{" + "codigo=" + codigo + ", cidadeCodigo=" + cidadeCodigo + ", rua=" + rua + ", complemento=" + complemento + ", numero=" + numero + ", bairro=" + bairro + ", cep=" + cep + '}';
     }
+
+   
+
+  
 }

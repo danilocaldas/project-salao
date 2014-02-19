@@ -6,8 +6,6 @@ package br.com.salao.teste.categoria;
 
 import br.com.salao.control.rn.CategoriaRN;
 import br.com.salao.model.beans.Categoria;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
 
 /**
@@ -16,7 +14,7 @@ import org.junit.Test;
  */
 public class CategoriaTest {
 
-    //@Test
+    @Test
     public void salvar() {
         Categoria categoria1 = new Categoria();
         categoria1.setDescricao("tratamento");

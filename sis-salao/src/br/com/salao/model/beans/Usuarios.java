@@ -20,7 +20,7 @@ public class Usuarios implements Serializable{
     
     private String senha;
     
-    private String roleUser;
+    private Boolean ativo;
 
     public Usuarios() {
     }
@@ -49,26 +49,21 @@ public class Usuarios implements Serializable{
         this.senha = senha;
     }
 
-    public String getRoleUser() {
-        return roleUser;
+    public Boolean getAtivo() {
+        return ativo;
     }
 
-    public void setRoleUser(String roleUser) {
-        this.roleUser = roleUser;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuarios{" + "codigo=" + codigo + ", login=" + login + ", senha=" + senha + ", roleUser=" + roleUser + '}';
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 17 * hash + Objects.hashCode(this.codigo);
-        hash = 17 * hash + Objects.hashCode(this.login);
-        hash = 17 * hash + Objects.hashCode(this.senha);
-        hash = 17 * hash + Objects.hashCode(this.roleUser);
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.codigo);
+        hash = 29 * hash + Objects.hashCode(this.login);
+        hash = 29 * hash + Objects.hashCode(this.senha);
+        hash = 29 * hash + Objects.hashCode(this.ativo);
         return hash;
     }
 
@@ -90,10 +85,15 @@ public class Usuarios implements Serializable{
         if (!Objects.equals(this.senha, other.senha)) {
             return false;
         }
-        if (!Objects.equals(this.roleUser, other.roleUser)) {
+        if (!Objects.equals(this.ativo, other.ativo)) {
             return false;
         }
         return true;
     }
-  
+
+    @Override
+    public String toString() {
+        return "Usuarios{" + "codigo=" + codigo + ", login=" + login + ", senha=" + senha + ", ativo=" + ativo + '}';
+    }
+
 }

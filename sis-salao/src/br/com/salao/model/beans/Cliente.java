@@ -14,13 +14,14 @@ import java.util.Objects;
 public class Cliente implements Serializable {
 
     private Integer codigo;
+    private Integer enderecoCodigo;
     private String nome;
     private Integer telefone;
     private Integer celular;
     private Integer rg;
     private Integer cpf;
     private String email;
-    private Endereco endereco;
+    
 
     public Cliente() {
     }
@@ -31,6 +32,14 @@ public class Cliente implements Serializable {
 
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
+    }
+
+    public Integer getEnderecoCodigo() {
+        return enderecoCodigo;
+    }
+
+    public void setEnderecoCodigo(Integer enderecoCodigo) {
+        this.enderecoCodigo = enderecoCodigo;
     }
 
     public String getNome() {
@@ -81,30 +90,17 @@ public class Cliente implements Serializable {
         this.email = email;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    @Override
-    public String toString() {
-        return "Cliente{" + "codigo=" + codigo + ", nome=" + nome + ", telefone=" + telefone + ", celular=" + celular + ", rg=" + rg + ", cpf=" + cpf + ", email=" + email + ", endereco=" + endereco + '}';
-    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 73 * hash + Objects.hashCode(this.codigo);
-        hash = 73 * hash + Objects.hashCode(this.nome);
-        hash = 73 * hash + Objects.hashCode(this.telefone);
-        hash = 73 * hash + Objects.hashCode(this.celular);
-        hash = 73 * hash + Objects.hashCode(this.rg);
-        hash = 73 * hash + Objects.hashCode(this.cpf);
-        hash = 73 * hash + Objects.hashCode(this.email);
-        hash = 73 * hash + Objects.hashCode(this.endereco);
+        int hash = 5;
+        hash = 43 * hash + Objects.hashCode(this.codigo);
+        hash = 43 * hash + Objects.hashCode(this.enderecoCodigo);
+        hash = 43 * hash + Objects.hashCode(this.nome);
+        hash = 43 * hash + Objects.hashCode(this.telefone);
+        hash = 43 * hash + Objects.hashCode(this.celular);
+        hash = 43 * hash + Objects.hashCode(this.rg);
+        hash = 43 * hash + Objects.hashCode(this.cpf);
+        hash = 43 * hash + Objects.hashCode(this.email);
         return hash;
     }
 
@@ -118,6 +114,9 @@ public class Cliente implements Serializable {
         }
         final Cliente other = (Cliente) obj;
         if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        if (!Objects.equals(this.enderecoCodigo, other.enderecoCodigo)) {
             return false;
         }
         if (!Objects.equals(this.nome, other.nome)) {
@@ -138,9 +137,13 @@ public class Cliente implements Serializable {
         if (!Objects.equals(this.email, other.email)) {
             return false;
         }
-        if (!Objects.equals(this.endereco, other.endereco)) {
-            return false;
-        }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "codigo=" + codigo + ", enderecoCodigo=" + enderecoCodigo + ", nome=" + nome + ", telefone=" + telefone + ", celular=" + celular + ", rg=" + rg + ", cpf=" + cpf + ", email=" + email + '}';
+    }
+
+  
 }

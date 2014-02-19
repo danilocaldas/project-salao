@@ -34,8 +34,8 @@ public class ServicoRN {
        return this.dao.delete(codigo);
     }
     
-    public List<Servico> listarServicos(Integer categoriaCodigo){
-        return this.dao.listAll(categoriaCodigo);
+    public List<Servico> listarServicos(){
+        return this.dao.listAll();
     }
     
 }
